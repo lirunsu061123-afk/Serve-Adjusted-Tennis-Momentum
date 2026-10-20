@@ -115,28 +115,6 @@ PDF 需要 TrueType 格式中文字体。Windows 默认查找微软雅黑/黑体
 
 默认报告的叙述对应已经运行的固定实验。表格读取 CSV，但部分解释中的数字是固定叙述；更改模型或参数后须核对并修改 `scripts/report_content.py`，再重建三种报告。所有已交付结果对应默认 1,999 次置换。
 
-## 发布到 GitHub
-
-发布 ZIP 已排除原始数据、虚拟环境、缓存和 `.git`。解压后在 GitHub 新建空仓库，例如 `mcm-2024-tennis-momentum`，再在解压目录执行：
-
-```bash
-git init
-git add .
-git status
-git commit -m "Add reproducible 2024 MCM C study"
-git branch -M main
-git remote add origin https://github.com/YOUR_ACCOUNT/mcm-2024-tennis-momentum.git
-git push -u origin main
-```
-
-将 `YOUR_ACCOUNT` 替换为自己的账号。若本地副本下载过数据，确认 `git status` 中不包含 `data/raw/*.csv`。本交付仅准备发布内容，没有替用户创建远程仓库或执行推送。
-
-Actions 的推送/PR 流程运行离线测试；在 Actions 页面手动运行 `Reproducible analysis` 才触发完整数据下载和实验，并保存结果 artifact。云端工作流尚未实际运行，不使用虚构的“CI passing”徽章。
-
-建议仓库描述：`A reproducible study of tennis momentum for 2024 MCM Problem C, with serve-adjusted models, permutation tests and a Chinese report.`
-
-建议 topics：`mathematical-modeling`、`mcm-icm`、`tennis`、`time-series`、`reproducible-research`、`python`。
-
 ## 来源、许可与披露
 
 官方数据与题目来自 [COMAP](https://www.comap.org/membership/member-resources/item/momentum-in-tennis)。原始数据不在发布 ZIP 内，项目不重新授权第三方材料。原创代码、图表和分析文档使用 [MIT](LICENSE)。
